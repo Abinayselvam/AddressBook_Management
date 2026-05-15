@@ -47,4 +47,22 @@ public class AddressBook {
         }
         System.out.println("Contact not found.");
     }
+    //UC3
+    public void deleteContact(String firstName) {
+        Contact toRemove = null;
+
+        for (Contact c : contacts) {
+            if (c.firstName.equalsIgnoreCase(firstName)) {
+                toRemove = c;
+                break;
+            }
+        }
+
+        if (toRemove != null) {
+            contacts.remove(toRemove);
+            System.out.println("Contact deleted.");
+        } else {
+            System.out.println("Contact not found.");
+        }
+    }
 }

@@ -33,10 +33,15 @@ public class AddressBookMain {
 
 
         Contact contact=new Contact(firstName,lastName,address,city,state,zipCode,email,phone);
+        //UC1
         book.addContact(contact);
+        //UC2
         book.editContact(firstName,sc);
+        //UC3
+        book.deleteContact(firstName);
         System.out.println("Show the Contact Details:");
         contact.displayContact();
+
         sc.close();
     }
 }
