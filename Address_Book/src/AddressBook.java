@@ -16,6 +16,7 @@ public class AddressBook {
             c.displayContact();
         }
     }
+    //uc2
     public void editContact(String firstName, Scanner sc) {
         for (Contact c : contacts) {
             if (c.firstName.equalsIgnoreCase(firstName)) {
