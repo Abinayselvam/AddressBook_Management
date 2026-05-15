@@ -1,16 +1,16 @@
 public class Contact {
 
-    private final String fistName;
-    private final String lastName;
-    private final String address;
-    private final String city;
-    private final String state;
-    private final double zip;
-    private final String email;
-    private final double phoneNumber;
+    String firstName;
+    String lastName;
+    String address;
+    String city;
+    String state;
+    double zip;
+    String email;
+    double phoneNumber;
     public Contact(String firstName,String lastName,String address,String city,String state,Double zip,String email,Double phoneNumber)
     {
-        this.fistName=firstName;
+        this.firstName=firstName;
         this.lastName=lastName;
         this.address=address;
         this.city=city;
@@ -21,7 +21,7 @@ public class Contact {
 
     }
     public void displayContact() {
-        System.out.println("Name: " + fistName + " " + lastName);
+        System.out.println("Name: " + firstName + " " + lastName);
         System.out.println("Address: " + address);
         System.out.println("City: " + city);
         System.out.println("State: " + state);

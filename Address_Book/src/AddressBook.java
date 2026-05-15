@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AddressBook {
     ArrayList<Contact> contacts = new ArrayList<>();
@@ -14,5 +15,35 @@ public class AddressBook {
         for (Contact c : contacts) {
             c.displayContact();
         }
+    }
+    public void editContact(String firstName, Scanner sc) {
+        for (Contact c : contacts) {
+            if (c.firstName.equalsIgnoreCase(firstName)) {
+
+                System.out.println("Editing contact...");
+
+                System.out.print("New Address: ");
+                c.address = sc.nextLine();
+
+                System.out.print("New City: ");
+                c.city = sc.nextLine();
+
+                System.out.print("New State: ");
+                c.state = sc.nextLine();
+
+                System.out.print("New Zip: ");
+                c.zip = sc.nextDouble();
+
+                System.out.print("New Phone: ");
+                c.phoneNumber = sc.nextDouble();
+
+                System.out.print("New Email: ");
+                c.email = sc.nextLine();
+
+                System.out.println("Contact updated.");
+                return;
+            }
+        }
+        System.out.println("Contact not found.");
     }
 }

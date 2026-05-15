@@ -34,6 +34,7 @@ public class AddressBookMain {
 
         Contact contact=new Contact(firstName,lastName,address,city,state,zipCode,email,phone);
         book.addContact(contact);
+        book.editContact(firstName,sc);
         System.out.println("Show the Contact Details:");
         contact.displayContact();
         sc.close();
