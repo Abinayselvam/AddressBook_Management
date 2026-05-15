@@ -3,20 +3,20 @@ import java.util.Scanner;
 
 public class AddressBook {
     ArrayList<Contact> contacts = new ArrayList<>();
-
-    // UC1 → Add Contact
-    public void addContact(Contact contact) {
-        contacts.add(contact);
-        System.out.println("Contact added successfully.");
-    }
-
-    // Display all contacts
+    // UC1
     public void displayContacts() {
         for (Contact c : contacts) {
             c.displayContact();
         }
     }
-    //uc2
+    // UC2 → Add Contact
+    public void addContact(Contact contact) {
+        contacts.add(contact);
+        System.out.println("Contact added successfully.");
+    }
+
+
+    //UC3 -> Edit Contact
     public void editContact(String firstName, Scanner sc) {
         for (Contact c : contacts) {
             if (c.firstName.equalsIgnoreCase(firstName)) {
@@ -47,7 +47,7 @@ public class AddressBook {
         }
         System.out.println("Contact not found.");
     }
-    //UC3
+    //UC4 -Delete Contact
     public void deleteContact(String firstName) {
         Contact toRemove = null;
 
