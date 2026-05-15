@@ -5,6 +5,7 @@ public class AddressBookMain {
     {
         System.out.println("Welcome to the Book Management System");
         Scanner sc=new Scanner(System.in);
+        AddressBook book=new AddressBook();
 
         System.out.println("Enter the firstName:");
         String firstName=sc.nextLine();
@@ -32,6 +33,7 @@ public class AddressBookMain {
 
 
         Contact contact=new Contact(firstName,lastName,address,city,state,zipCode,email,phone);
+        book.addContact(contact);
         System.out.println("Show the Contact Details:");
         contact.displayContact();
         sc.close();
