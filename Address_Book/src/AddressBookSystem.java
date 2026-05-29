@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -293,6 +294,122 @@ public class AddressBookSystem {
                                         + " Persons"
                         )
         );
+    }
+    public void sortByName() {
+
+        System.out.println(
+                "\nSORT BY NAME"
+        );
+
+        addressBooks.values()
+
+                .stream()
+
+                .flatMap(
+
+                        book ->
+                                book.getContacts()
+                                        .stream()
+                )
+
+                .sorted(
+
+                        Comparator.comparing(
+                                person ->
+                                        person.firstName
+                        )
+                )
+
+                .forEach(
+                        System.out::println
+                );
+    }
+    public void sortByCity() {
+
+        System.out.println(
+                "\nSORT BY CITY"
+        );
+
+        addressBooks.values()
+
+                .stream()
+
+                .flatMap(
+
+                        book ->
+                                book.getContacts()
+                                        .stream()
+                )
+
+                .sorted(
+
+                        Comparator.comparing(
+                                person ->
+                                        person.city
+                        )
+                )
+
+                .forEach(
+                        System.out::println
+                );
+    }
+    public void sortByState() {
+
+        System.out.println(
+                "\nSORT BY STATE"
+        );
+
+        addressBooks.values()
+
+                .stream()
+
+                .flatMap(
+
+                        book ->
+                                book.getContacts()
+                                        .stream()
+                )
+
+                .sorted(
+
+                        Comparator.comparing(
+                                person ->
+                                        person.state
+                        )
+                )
+
+                .forEach(
+                        System.out::println
+                );
+    }
+    public void sortByZip() {
+
+        System.out.println(
+                "\nSORT BY ZIP"
+        );
+
+        addressBooks.values()
+
+                .stream()
+
+                .flatMap(
+
+                        book ->
+                                book.getContacts()
+                                        .stream()
+                )
+
+                .sorted(
+
+                        Comparator.comparing(
+                                person ->
+                                        person.zip
+                        )
+                )
+
+                .forEach(
+                        System.out::println
+                );
     }
 
 

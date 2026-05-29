@@ -237,6 +237,13 @@ public class AddressBookMain {
             system.countByCity();
 
             system.countByState();
+            system.sortByName();
+
+            system.sortByCity();
+
+            system.sortByState();
+
+            system.sortByZip();
         }
 
     }
