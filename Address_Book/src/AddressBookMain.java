@@ -233,6 +233,8 @@ public class AddressBookMain {
                                 "Invalid Choice"
                         );
             }
+            system.viewByCity();
         }
+
     }
 }

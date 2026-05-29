@@ -68,6 +68,47 @@ public class AddressBookSystem {
                                 )
                         );
     }
+    public void viewByCity() {
+
+        buildCityDictionary();
+
+        cityDictionary.forEach(
+
+                (city,persons) -> {
+
+                    System.out.println(
+
+                            "\nCity : "
+                                    + city
+                    );
+
+                    persons.forEach(
+                            Contact::displayContact
+                    );
+                }
+        );
+    }
+
+    public void viewByState() {
+
+        buildStateDictionary();
+
+        stateDictionary.forEach(
+
+                (state,persons) -> {
+
+                    System.out.println(
+
+                            "\nState : "
+                                    + state
+                    );
+
+                    persons.forEach(
+                            Contact::displayContact
+                    );
+                }
+        );
+    }
 
     public void addAddressBook(String name) {
         if (addressBooks.containsKey(name)) {
