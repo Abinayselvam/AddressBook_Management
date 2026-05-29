@@ -36,7 +36,7 @@ public class AddressBookMain {
 
             System.out.println(
 
-                    "\n1.Add Contact" +
+                            "\n1.Add Contact" +
                             "\n2.Edit Contact" +
                             "\n3.Delete Contact" +
                             "\n4.Display Contacts" +
