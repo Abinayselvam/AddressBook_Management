@@ -1,3 +1,4 @@
+import java.util.*;
 public class Contact {
 
     String firstName;
@@ -28,4 +29,40 @@ public class Contact {
                 address + ", " + city + ", " + state +
                 " | " + zip + " | " + phoneNumber + " | " + email);
     }
+
+    @Override
+    public boolean equals(
+            Object obj) {
+
+        if(this == obj)
+            return true;
+
+        if(obj == null ||
+                getClass() != obj.getClass())
+            return false;
+
+        Contact person =
+                (Contact) obj;
+
+        return firstName.equalsIgnoreCase(
+                person.firstName
+        )
+                &&
+                lastName.equalsIgnoreCase(
+                        person.lastName
+                );
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(
+
+                firstName.toLowerCase(),
+
+                lastName.toLowerCase()
+        );
+    }
+
+
 }

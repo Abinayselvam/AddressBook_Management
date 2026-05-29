@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AddressBookSystem {
 
@@ -29,5 +31,70 @@ public class AddressBookSystem {
         return addressBooks.get(
                 bookName
         );
+    }
+    // SEARCH BY CITY
+
+    public List<Contact>
+    searchByCity(
+            String city) {
+
+        return addressBooks.values()
+
+                .stream()
+
+                .flatMap(
+
+                        book ->
+
+                                book.getContacts()
+                                        .stream()
+                )
+
+                .filter(
+
+                        person ->
+
+                                person.city
+                                        .equalsIgnoreCase(
+                                                city
+                                        )
+                )
+
+                .collect(
+                        Collectors.toList()
+                );
+    }
+
+    // SEARCH BY STATE
+
+    public List<Contact>
+    searchByState(
+            String state) {
+
+        return addressBooks.values()
+
+                .stream()
+
+                .flatMap(
+
+                        book ->
+
+                                book.getContacts()
+                                        .stream()
+                )
+
+                .filter(
+
+                        person ->
+
+                                person.state
+                                        .equalsIgnoreCase(
+                                                state
+                                        )
+                )
+
+                .collect(
+                        Collectors.toList()
+                );
     }
 }

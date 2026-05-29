@@ -1,43 +1,190 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBook {
 
-    private final ArrayList<Contact> contacts = new ArrayList<>();
+    private final ArrayList<Contact>
+            contacts =
+            new ArrayList<>();
 
-    public void addContact(Contact contact) {
+    // UC7 — Duplicate Check
+
+    public void addContact(
+            Contact contact) {
+
+        boolean duplicate =
+
+                contacts.stream()
+
+                        .anyMatch(
+
+                                c ->
+
+                                        c.firstName
+                                                .equalsIgnoreCase(
+                                                        contact.firstName
+                                                )
+
+                                                &&
+
+                                                c.lastName
+                                                        .equalsIgnoreCase(
+                                                                contact.lastName
+                                                        )
+                        );
+
+        if (duplicate) {
+
+            System.out.println(
+                    "Duplicate Contact Not Allowed"
+            );
+
+            return;
+        }
+
         contacts.add(contact);
+
+        System.out.println(
+                "Contact Added Successfully"
+        );
     }
 
     public void displayContacts() {
-        for (Contact c : contacts) {
-            c.displayContact();
-        }
+
+        contacts.forEach(
+                Contact::displayContact
+        );
     }
 
-    public void editContact(String firstName, Scanner sc) {
-        for (Contact c : contacts) {
-            if (c.firstName.equalsIgnoreCase(firstName)) {
+    public void editContact(
+            String firstName,
+            Scanner sc) {
 
-                System.out.print("New City: ");
-                c.city = sc.nextLine();
+        for(Contact c : contacts) {
 
-                System.out.print("New Phone: ");
-                c.phoneNumber = sc.nextLine();
+            if(c.firstName
+                    .equalsIgnoreCase(
+                            firstName
+                    )) {
+
+                System.out.print(
+                        "New City: "
+                );
+
+                c.city =
+                        sc.nextLine();
+
+                System.out.print(
+                        "New Phone: "
+                );
+
+                c.phoneNumber =
+                        sc.nextLine();
 
                 return;
             }
         }
-        System.out.println("Contact not found");
+
+        System.out.println(
+                "Contact not found"
+        );
     }
 
-    public void deleteContact(String firstName) {
-        contacts.removeIf(c -> c.firstName.equalsIgnoreCase(firstName));
+    public void deleteContact(
+            String firstName) {
+
+        contacts.removeIf(
+
+                c -> c.firstName
+                        .equalsIgnoreCase(
+                                firstName
+                        )
+        );
     }
 
     public ArrayList<Contact>
     getContacts() {
 
         return contacts;
+    }
+
+    // UC8 — Search By City
+
+    public List<Contact>
+    searchByCity(
+            String city) {
+
+        return contacts.stream()
+
+                .filter(
+
+                        c -> c.city
+                                .equalsIgnoreCase(
+                                        city
+                                )
+                )
+
+                .collect(
+                        Collectors.toList()
+                );
+    }
+
+    // UC8 — Search By State
+
+    public List<Contact>
+    searchByState(
+            String state) {
+
+        return contacts.stream()
+
+                .filter(
+
+                        c -> c.state
+                                .equalsIgnoreCase(
+                                        state
+                                )
+                )
+
+                .collect(
+                        Collectors.toList()
+                );
+    }
+
+    // UC10 — Count By City
+
+    public long countByCity(
+            String city) {
+
+        return contacts.stream()
+
+                .filter(
+
+                        c -> c.city
+                                .equalsIgnoreCase(
+                                        city
+                                )
+                )
+
+                .count();
+    }
+
+    // UC10 — Count By State
+
+    public long countByState(
+            String state) {
+
+        return contacts.stream()
+
+                .filter(
+
+                        c -> c.state
+                                .equalsIgnoreCase(
+                                        state
+                                )
+                )
+
+                .count();
     }
 }
