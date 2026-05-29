@@ -15,6 +15,28 @@ public class AddressBookMain {
 
         manager.addAddressBook(bookName);
         AddressBook book = manager.getAddressBook(bookName);
+        AddressBookSystem system=new AddressBookSystem();
+        AddressBook familyBook =
+                system.getBook(
+                        "Family"
+                );
+        familyBook.addContact(
+
+                new Contact(
+
+                        "Abinaya",
+                        "Selvam",
+                        "533,SouthStree",
+                        "Chennai",
+                        "Tamil Nadu",
+                        "603209",
+                        "user1@gmail.com",
+                        "1234567890"
+
+                )
+        );
+
+        familyBook.displayContacts();
 
         // UC4 → multiple contacts
         while (true) {

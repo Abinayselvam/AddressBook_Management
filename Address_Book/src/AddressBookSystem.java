@@ -23,4 +23,11 @@ public class AddressBookSystem {
             System.out.println(name);
         }
     }
+    public AddressBook getBook(
+            String bookName) {
+
+        return addressBooks.get(
+                bookName
+        );
+    }
 }
