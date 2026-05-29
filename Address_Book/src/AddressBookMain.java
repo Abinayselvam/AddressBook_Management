@@ -234,6 +234,9 @@ public class AddressBookMain {
                         );
             }
             system.viewByCity();
+            system.countByCity();
+
+            system.countByState();
         }
 
     }

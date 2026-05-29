@@ -201,6 +201,99 @@ public class AddressBookSystem {
                         Collectors.toList()
                 );
     }
+    // COUNT BY CITY
+
+    public void countByCity() {
+
+        Map<String,Long> cityCount =
+
+                addressBooks.values()
+
+                        .stream()
+
+                        .flatMap(
+
+                                book ->
+
+                                        book.getContacts()
+                                                .stream()
+                        )
+
+                        .collect(
+
+                                Collectors.groupingBy(
+
+                                        person ->
+                                                person.city,
+
+                                        Collectors.counting()
+                                )
+                        );
+
+        System.out.println(
+                "\nCOUNT BY CITY"
+        );
+
+        cityCount.forEach(
+
+                (city,count) ->
+
+                        System.out.println(
+
+                                city
+                                        + " -> "
+                                        + count
+                                        + " Persons"
+                        )
+        );
+    }
+
+    // COUNT BY STATE
+
+    public void countByState() {
+
+        Map<String,Long> stateCount =
+
+                addressBooks.values()
+
+                        .stream()
+
+                        .flatMap(
+
+                                book ->
+
+                                        book.getContacts()
+                                                .stream()
+                        )
+
+                        .collect(
+
+                                Collectors.groupingBy(
+
+                                        person ->
+                                                person.state,
+
+                                        Collectors.counting()
+                                )
+                        );
+
+        System.out.println(
+                "\nCOUNT BY STATE"
+        );
+
+        stateCount.forEach(
+
+                (state,count) ->
+
+                        System.out.println(
+
+                                state
+                                        + " -> "
+                                        + count
+                                        + " Persons"
+                        )
+        );
+    }
 
 
 }
