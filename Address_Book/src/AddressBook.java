@@ -47,19 +47,15 @@ public class AddressBook {
                             firstName
                     )) {
 
-                System.out.print(
-                        "New City: "
-                );
+    public void editContact(String firstName, Scanner sc) {
+        for (Contact c : contacts) {
+            if (c.firstName.equalsIgnoreCase(firstName)) {
 
-                c.city =
-                        sc.nextLine();
+                System.out.print("New City: ");
+                c.city = sc.nextLine();
 
-                System.out.print(
-                        "New Phone: "
-                );
-
-                c.phoneNumber =
-                        sc.nextLine();
+                System.out.print("New Phone: ");
+                c.phoneNumber = sc.nextLine();
 
                 return;
             }
