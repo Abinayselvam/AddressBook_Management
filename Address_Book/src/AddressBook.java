@@ -11,40 +11,18 @@ public class AddressBook {
 
     // UC7 — Duplicate Check
 
-    public void addContact(
-            Contact contact) {
+    public void addContact(Contact person) {
 
-        boolean duplicate =
-
-                contacts.stream()
-
-                        .anyMatch(
-
-                                c ->
-
-                                        c.firstName
-                                                .equalsIgnoreCase(
-                                                        contact.firstName
-                                                )
-
-                                                &&
-
-                                                c.lastName
-                                                        .equalsIgnoreCase(
-                                                                contact.lastName
-                                                        )
-                        );
-
-        if (duplicate) {
+        if(contacts.contains(person)) {
 
             System.out.println(
-                    "Duplicate Contact Not Allowed"
+                    "Duplicate Contact Found!"
             );
 
             return;
         }
 
-        contacts.add(contact);
+        contacts.add(person);
 
         System.out.println(
                 "Contact Added Successfully"
