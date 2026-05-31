@@ -218,6 +218,60 @@ public class AddressBookSystem {
                         Collectors.toList()
                 );
     }
+    public long countByCity(
+            String city) {
+
+        return addressBooks.values()
+
+                .stream()
+
+                .flatMap(
+
+                        book ->
+
+                                book.getContacts()
+                                        .stream()
+                )
+
+                .filter(
+
+                        contact ->
+
+                                contact.city
+                                        .equalsIgnoreCase(
+                                                city
+                                        )
+                )
+
+                .count();
+    }
+    public long countByState(
+            String state)
+    {
+        return addressBooks.values()
+
+                .stream()
+
+                .flatMap(
+
+                        book ->
+
+                                book.getContacts()
+                                        .stream()
+                )
+
+                .filter(
+
+                        contact ->
+
+                                contact.city
+                                        .equalsIgnoreCase(
+                                                state
+                                        )
+                )
+
+                .count();
+    }
 
 
 }
