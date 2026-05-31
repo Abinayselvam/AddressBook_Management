@@ -28,4 +28,26 @@ public class Contact {
                 address + ", " + city + ", " + state +
                 " | " + zip + " | " + phoneNumber + " | " + email);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if(this == obj)
+            return true;
+
+        if(obj == null ||
+                getClass() != obj.getClass())
+            return false;
+
+        Contact contact =
+                (Contact) obj;
+
+        return firstName.equals(
+                contact.firstName)
+
+                &&
+
+                lastName.equals(
+                        contact.lastName);
+    }
 }

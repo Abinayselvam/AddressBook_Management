@@ -5,7 +5,27 @@ public class AddressBook {
 
     private final ArrayList<Contact> contacts = new ArrayList<>();
 
-    public void addContact(Contact contact) {
+    public void addContact(
+            Contact contact) {
+
+        boolean exists =
+
+                contacts.stream()
+
+                        .anyMatch(c ->
+
+                                c.equals(contact)
+                        );
+
+        if(exists) {
+
+            System.out.println(
+                    "Duplicate Contact Found"
+            );
+
+            return;
+        }
+
         contacts.add(contact);
     }
 
