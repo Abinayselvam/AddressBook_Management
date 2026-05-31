@@ -6,6 +6,11 @@ import java.util.stream.Collectors;
 public class AddressBookSystem {
 
      Map<String, AddressBook> addressBooks = new HashMap<>();
+    Map<String,List<Contact>>
+            cityMap = new HashMap<>();
+
+    Map<String,List<Contact>>
+            stateMap = new HashMap<>();
 
     public void addAddressBook(String name) {
         if (addressBooks.containsKey(name)) {
