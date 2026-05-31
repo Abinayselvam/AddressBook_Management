@@ -10,6 +10,21 @@ public class Contact {
     String email;
     String phoneNumber;
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
     public Contact(String firstName, String lastName, String address,
                    String city, String state, String zip,
                    String email, String phoneNumber) {
@@ -62,6 +77,17 @@ public class Contact {
 
                 lastName.toLowerCase()
         );
+    }
+    @Override
+    public String toString() {
+
+        return
+
+                firstName+" "
+                        +lastName+" | "
+                        +city+" | "
+                        +state+" | "
+                        +zip;
     }
 
 
