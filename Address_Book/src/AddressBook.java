@@ -1,34 +1,74 @@
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBook {
 
-    private final ArrayList<Contact> contacts = new ArrayList<>();
+    private final ArrayList<Contact>
+            contacts =
+            new ArrayList<>();
 
-    public void addContact(Contact contact) {
-        contacts.add(contact);
+    // UC7 — Duplicate Check
+
+    public void addContact(Contact person) {
+
+        if(contacts.contains(person)) {
+
+            System.out.println(
+                    "Duplicate Contact Found!"
+            );
+
+            return;
+        }
+
+        contacts.add(person);
+
+        System.out.println(
+                "Contact Added Successfully"
+        );
     }
 
     public void displayContacts() {
-        for (Contact c : contacts) {
-            c.displayContact();
-        }
+
+        contacts.forEach(
+                Contact::displayContact
+        );
     }
 
-    public void editContact(String firstName, Scanner sc) {
-        for (Contact c : contacts) {
-            if (c.firstName.equalsIgnoreCase(firstName)) {
+    public void editContact(
+            String firstName,
+            Scanner sc) {
 
-                System.out.print("New City: ");
-                c.city = sc.nextLine();
+        for(Contact c : contacts) {
 
-                System.out.print("New Phone: ");
-                c.phoneNumber = sc.nextLine();
+            if(c.firstName
+                    .equalsIgnoreCase(
+                            firstName
+                    )) {
+
+                System.out.print(
+                        "New City: "
+                );
+
+                c.city =
+                        sc.nextLine();
+
+                System.out.print(
+                        "New Phone: "
+                );
+
+                c.phoneNumber =
+                        sc.nextLine();
 
                 return;
             }
         }
-        System.out.println("Contact not found");
+
+        System.out.println(
+                "Contact not found"
+        );
     }
 
     public void deleteContact(String firstName) {
@@ -40,4 +80,98 @@ public class AddressBook {
 
         return contacts;
     }
+
+    // UC8 — Search By City
+
+    public List<Contact>
+    searchByCity(
+            String city) {
+
+        return contacts.stream()
+
+                .filter(
+
+                        c -> c.city
+                                .equalsIgnoreCase(
+                                        city
+                                )
+                )
+
+                .collect(
+                        Collectors.toList()
+                );
+    }
+
+    // UC8 — Search By State
+
+    public List<Contact>
+    searchByState(
+            String state) {
+
+        return contacts.stream()
+
+                .filter(
+
+                        c -> c.state
+                                .equalsIgnoreCase(
+                                        state
+                                )
+                )
+
+                .collect(
+                        Collectors.toList()
+                );
+    }
+
+    // UC10 — Count By City
+
+    public long countByCity(
+            String city) {
+
+        return contacts.stream()
+
+                .filter(
+
+                        c -> c.city
+                                .equalsIgnoreCase(
+                                        city
+                                )
+                )
+
+                .count();
+    }
+
+    // UC10 — Count By State
+
+    public long countByState(
+            String state) {
+
+        return contacts.stream()
+
+                .filter(
+
+                        c -> c.state
+                                .equalsIgnoreCase(
+                                        state
+                                )
+                )
+
+                .count();
+    }
+    public void sortByName() {
+
+        contacts.stream()
+
+                .sorted(
+
+                        Comparator.comparing(
+                                Contact::getFirstName
+                        )
+                )
+
+                .forEach(
+                        System.out::println
+                );
+    }
+
 }

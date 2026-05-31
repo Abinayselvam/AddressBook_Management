@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,28 +47,47 @@ public class AddressBookSystem {
 
     public void buildStateDictionary() {
 
-        stateDictionary =
+        cityDictionary.clear();
 
-                (HashMap<String, List<Contact>>) addressBooks.values()
+        stateDictionary.clear();
 
-                        .stream()
+        addressBooks.values()
 
-                        .flatMap(
+                .stream()
 
-                                book ->
+                .flatMap(
 
-                                        book.getContacts()
-                                                .stream()
-                        )
+                        book ->
 
-                        .collect(
+                                book.getContacts()
+                                        .stream()
+                )
 
-                                Collectors.groupingBy(
+                .forEach(contact -> {
 
-                                        person ->
-                                                person.state
-                                )
-                        );
+                    cityDictionary
+                            .computeIfAbsent(
+
+                                    contact.city,
+
+                                    k ->
+                                            new ArrayList<>()
+
+                            )
+                            .add(contact);
+
+                    stateDictionary
+                            .computeIfAbsent(
+
+                                    contact.state,
+
+                                    k ->
+                                            new ArrayList<>()
+
+                            )
+                            .add(contact);
+
+                });
     }
     public void viewByCity() {
 
@@ -90,25 +110,22 @@ public class AddressBookSystem {
         );
     }
 
-    public void viewByState() {
+    public void viewByState(
+            String state) {
 
         buildStateDictionary();
 
-        stateDictionary.forEach(
+        stateDictionary
+                .getOrDefault(
 
-                (state,persons) -> {
+                        state,
 
-                    System.out.println(
+                        new ArrayList<>()
+                )
 
-                            "\nState : "
-                                    + state
-                    );
-
-                    persons.forEach(
-                            Contact::displayContact
-                    );
-                }
-        );
+                .forEach(
+                        Contact::displayContact
+                );
     }
 
     public void addAddressBook(String name) {
@@ -169,6 +186,7 @@ public class AddressBookSystem {
                 );
     }
 
+
     // SEARCH BY STATE
 
     public List<Contact>
@@ -200,6 +218,60 @@ public class AddressBookSystem {
                 .collect(
                         Collectors.toList()
                 );
+    }
+    public long countByCity(
+            String city) {
+
+        return addressBooks.values()
+
+                .stream()
+
+                .flatMap(
+
+                        book ->
+
+                                book.getContacts()
+                                        .stream()
+                )
+
+                .filter(
+
+                        contact ->
+
+                                contact.city
+                                        .equalsIgnoreCase(
+                                                city
+                                        )
+                )
+
+                .count();
+    }
+    public long countByState(
+            String state)
+    {
+        return addressBooks.values()
+
+                .stream()
+
+                .flatMap(
+
+                        book ->
+
+                                book.getContacts()
+                                        .stream()
+                )
+
+                .filter(
+
+                        contact ->
+
+                                contact.city
+                                        .equalsIgnoreCase(
+                                                state
+                                        )
+                )
+
+                .count();
     }
     // COUNT BY CITY
 
