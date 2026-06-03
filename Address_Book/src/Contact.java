@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Contact {
 
     String firstName;
@@ -80,13 +82,21 @@ public class Contact {
     @Override
     public String toString() {
 
-        return
+        return firstName + "," +
 
-                firstName+" "
-                        +lastName+" | "
-                        +city+" | "
-                        +state+" | "
-                        +zip;
+                lastName + "," +
+
+                address + "," +
+
+                city + "," +
+
+                state + "," +
+
+                zip + "," +
+
+                phoneNumber + "," +
+
+                email;
     }
 
 

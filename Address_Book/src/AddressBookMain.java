@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,11 +10,13 @@ public class AddressBookMain {
                 "Welcome To Address Book Program"
         );
 
-        Scanner sc =
-                new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         AddressBookSystem system =
                 new AddressBookSystem();
+
+        AddressBookFileIOService fileIO =
+                new AddressBookFileIOService();
 
         System.out.print(
                 "Enter Address Book Name: "
@@ -27,25 +30,33 @@ public class AddressBookMain {
         );
 
         AddressBook book =
-
                 system.getBook(
                         bookName
                 );
 
         while(true) {
 
-            System.out.println(
+            System.out.println("""
 
-                            "\n1.Add Contact" +
-                            "\n2.Edit Contact" +
-                            "\n3.Delete Contact" +
-                            "\n4.Display Contacts" +
-                            "\n5.Search By City" +
-                            "\n6.Search By State" +
-                            "\n7.Count By City" +
-                            "\n8.Count By State" +
-                            "\n9.Exit"
-            );
+                    ===== MENU =====
+
+                    1.Add Contact
+                    2.Edit Contact
+                    3.Delete Contact
+                    4.Display Contacts
+                    5.Search By City
+                    6.Search By State
+                    7.Count By City
+                    8.Count By State
+                    9.Sort By Name
+                    10.Sort By City
+                    11.Sort By State
+                    12.Sort By Zip
+                    13.Write To File
+                    14.Read From File
+                    15.Count File Entries
+                    16.Exit
+                    """);
 
             int choice =
                     sc.nextInt();
@@ -58,55 +69,46 @@ public class AddressBookMain {
 
                     System.out.print(
                             "First Name: ");
-
                     String firstName =
                             sc.nextLine();
 
                     System.out.print(
                             "Last Name: ");
-
                     String lastName =
                             sc.nextLine();
 
                     System.out.print(
                             "Address: ");
-
                     String address =
                             sc.nextLine();
 
                     System.out.print(
                             "City: ");
-
                     String city =
                             sc.nextLine();
 
                     System.out.print(
                             "State: ");
-
                     String state =
                             sc.nextLine();
 
                     System.out.print(
                             "Zip: ");
-
                     String zip =
                             sc.nextLine();
 
                     System.out.print(
                             "Email: ");
-
                     String email =
                             sc.nextLine();
 
                     System.out.print(
                             "Phone: ");
-
                     String phone =
                             sc.nextLine();
 
                     Contact contact =
                             new Contact(
-
                                     firstName,
                                     lastName,
                                     address,
@@ -144,6 +146,7 @@ public class AddressBookMain {
                 }
 
                 case 4 ->
+
                         book.displayContacts();
 
                 case 5 -> {
@@ -174,10 +177,11 @@ public class AddressBookMain {
                             sc.nextLine();
 
                     system.searchByState(
-                            state
-                    ).forEach(
-                            Contact::displayContact
-                    );
+                                    state
+                            )
+                            .forEach(
+                                    Contact::displayContact
+                            );
                 }
 
                 case 7 -> {
@@ -190,7 +194,9 @@ public class AddressBookMain {
 
                     System.out.println(
 
-                            "Count = " +
+                            "Count = "
+
+                                    +
 
                                     book.countByCity(
                                             city
@@ -208,7 +214,9 @@ public class AddressBookMain {
 
                     System.out.println(
 
-                            "Count = " +
+                            "Count = "
+
+                                    +
 
                                     book.countByState(
                                             state
@@ -216,7 +224,93 @@ public class AddressBookMain {
                     );
                 }
 
-                case 9 -> {
+                case 9 ->
+
+                        system.sortByName();
+
+                case 10 ->
+
+                        system.sortByCity();
+
+                case 11 ->
+
+                        system.sortByState();
+
+                case 12 ->
+
+                        system.sortByZip();
+
+                case 13 -> {
+
+                    try {
+
+                        fileIO.writeData(
+                                book.getContacts()
+                        );
+
+                    }
+
+                    catch(IOException e) {
+
+                        System.out.println(
+
+                                "File Write Error : "
+
+                                        +
+
+                                        e.getMessage()
+                        );
+                    }
+                }
+
+                case 14 -> {
+
+                    try {
+
+                        fileIO.readData();
+                    }
+
+                    catch(IOException e) {
+
+                        System.out.println(
+
+                                "File Read Error : "
+
+                                        +
+
+                                        e.getMessage()
+                        );
+                    }
+                }
+
+                case 15 -> {
+
+                    try {
+
+                        System.out.println(
+
+                                "Entries : "
+
+                                        +
+
+                                        fileIO.countEntries()
+                        );
+                    }
+
+                    catch(IOException e) {
+
+                        System.out.println(
+
+                                "Count Error : "
+
+                                        +
+
+                                        e.getMessage()
+                        );
+                    }
+                }
+
+                case 16 -> {
 
                     System.out.println(
                             "Exiting..."
@@ -233,18 +327,6 @@ public class AddressBookMain {
                                 "Invalid Choice"
                         );
             }
-            system.viewByCity();
-            system.countByCity();
-
-            system.countByState();
-            system.sortByName();
-
-            system.sortByCity();
-
-            system.sortByState();
-
-            system.sortByZip();
         }
-
     }
 }
