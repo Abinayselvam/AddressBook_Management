@@ -19,6 +19,7 @@ public class AddressBookMain {
                 new AddressBookFileIOService();
 
         AddressBookCSVService csvService=new AddressBookCSVService();
+        AddressBookJSONService jsonService=new AddressBookJSONService();
 
 
         System.out.print(
@@ -60,7 +61,9 @@ public class AddressBookMain {
                     15.Count File Entries
                     16.CSV Write
                     17.CSV Read
-                    18.Exit
+                    18.CSV Read
+                    19.CSV Write
+                    20.Exit
                     """);
 
             int choice =
@@ -341,7 +344,29 @@ public class AddressBookMain {
                         System.out.println(e.getMessage());
                     }
                 }
-                case 18 -> {
+                case 18 ->
+                {
+                    try {
+                        jsonService.jsonRead();
+
+                    }
+                    catch (Exception  e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
+                }
+                case 19 ->
+                {
+                    try {
+                        jsonService.jsonWrite(book.getContacts());
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
+
+                }
+                case 20 -> {
 
                     System.out.println(
                             "Exiting..."
