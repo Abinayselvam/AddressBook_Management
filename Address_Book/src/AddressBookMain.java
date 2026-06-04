@@ -18,6 +18,9 @@ public class AddressBookMain {
         AddressBookFileIOService fileIO =
                 new AddressBookFileIOService();
 
+        AddressBookCSVService csvService=new AddressBookCSVService();
+
+
         System.out.print(
                 "Enter Address Book Name: "
         );
@@ -55,7 +58,9 @@ public class AddressBookMain {
                     13.Write To File
                     14.Read From File
                     15.Count File Entries
-                    16.Exit
+                    16.CSV Write
+                    17.CSV Read
+                    18.Exit
                     """);
 
             int choice =
@@ -310,7 +315,33 @@ public class AddressBookMain {
                     }
                 }
 
+
                 case 16 -> {
+
+                    try {
+
+                        csvService.writeFile(
+                                book.getContacts()
+                        );
+
+                    } catch (Exception e) {
+
+                        System.out.println(
+                                e.getMessage()
+                        );
+                    }
+                }
+                case 17 ->{
+                    try{
+                        csvService.readFile();
+
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
+                }
+                case 18 -> {
 
                     System.out.println(
                             "Exiting..."
