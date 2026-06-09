@@ -1,15 +1,16 @@
+package Entity;
 import java.util.Objects;
 
 public class Contact {
 
-    String firstName;
-    String lastName;
-    String address;
-    String city;
-    String state;
-    String zip;
-    String email;
-    String phoneNumber;
+  public   String firstName;
+  public   String lastName;
+  public   String address;
+  public   String city;
+  public   String state;
+  public   String zip;
+  public   String email;
+  public   String phoneNumber;
 
     public String getFirstName() {
         return firstName;

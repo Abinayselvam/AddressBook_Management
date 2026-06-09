@@ -1,8 +1,10 @@
+package Services;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import Entity.Contact;
 
 public class AddressBook {
 
@@ -29,6 +31,7 @@ public class AddressBook {
                 "Contact Added Successfully"
         );
     }
+
 
     public void displayContacts() {
 
@@ -173,9 +176,6 @@ public class AddressBook {
                         System.out::println
                 );
     }
-//   public List<Contact> getContact()
-//   {
-//       return contacts;
-//   }
+
 
 }

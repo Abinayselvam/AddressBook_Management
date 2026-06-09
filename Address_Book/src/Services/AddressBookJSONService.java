@@ -1,3 +1,4 @@
+package Services;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -6,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
 import java.util.List;
+import Entity.Contact;
 
 public class AddressBookJSONService {
     private static final String FILE_NAME="AddressBook.json";
