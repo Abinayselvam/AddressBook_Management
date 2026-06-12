@@ -212,7 +212,7 @@ public class PayrollDBService {
             String query =
 
                     "SELECT * FROM addressbook_service " +
-                            "WHERE date_added BETWEEN ? AND ?";
+                            "WHERE start_date BETWEEN ? AND ?";
 
             PreparedStatement ps =
                     connection.prepareStatement(
@@ -233,6 +233,82 @@ public class PayrollDBService {
                                 + " "
                                 +
                                 rs.getString("last_name")
+                );
+            }
+
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void countByCity()
+    {
+        try {
+
+            Connection connection =
+                    getConnection();
+
+            String query =
+
+                    "SELECT city, COUNT(*) total " +
+                            "FROM addressbook_service " +
+                            "GROUP BY city";
+
+            Statement statement =
+                    connection.createStatement();
+
+            ResultSet rs =
+                    statement.executeQuery(
+                            query
+                    );
+
+            while(rs.next())
+            {
+                System.out.println(
+
+                        rs.getString("city")
+                                + " : "
+                                +
+                                rs.getInt("total")
+                );
+            }
+
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void countByState()
+    {
+        try {
+
+            Connection connection =
+                    getConnection();
+
+            String query =
+
+                    "SELECT state, COUNT(*) total " +
+                            "FROM addressbook_service " +
+                            "GROUP BY state";
+
+            Statement statement =
+                    connection.createStatement();
+
+            ResultSet rs =
+                    statement.executeQuery(
+                            query
+                    );
+
+            while(rs.next())
+            {
+                System.out.println(
+
+                        rs.getString("state")
+                                + " : "
+                                +
+                                rs.getInt("total")
                 );
             }
 

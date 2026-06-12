@@ -33,6 +33,8 @@ public class DBTest {
              System.out.println(
                      "Sync Status : " + result
              );
+             service.countByCity();
+             service.countByState();
              connection.close();
 
 
