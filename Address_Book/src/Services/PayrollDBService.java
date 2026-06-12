@@ -318,5 +318,83 @@ public class PayrollDBService {
             e.printStackTrace();
         }
     }
+    public void addContact(
+            Contact contact)
+    {
+        try {
+
+            Connection connection =
+                    getConnection();
+
+            String query =
+
+                    "INSERT INTO addressbook_service " +
+                            "(first_name,last_name,address,city,state,zip,phone_number,email,start_date) " +
+                            "VALUES(?,?,?,?,?,?,?,?,?)";
+
+            PreparedStatement ps =
+                    connection.prepareStatement(
+                            query
+                    );
+
+            ps.setString(
+                    1,
+                    contact.firstName
+            );
+
+            ps.setString(
+                    2,
+                    contact.lastName
+            );
+
+            ps.setString(
+                    3,
+                    contact.address
+            );
+
+            ps.setString(
+                    4,
+                    contact.city
+            );
+
+            ps.setString(
+                    5,
+                    contact.state
+            );
+
+            ps.setString(
+                    6,
+                    contact.zip
+            );
+
+            ps.setString(
+                    7,
+                    contact.phoneNumber
+            );
+
+            ps.setString(
+                    8,
+                    contact.email
+            );
+
+            ps.setDate(
+                    9,
+                    Date.valueOf(
+                            java.time.LocalDate.now()
+                    )
+            );
+
+            ps.executeUpdate();
+
+            System.out.println(
+                    "Contact Added Successfully"
+            );
+
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 }

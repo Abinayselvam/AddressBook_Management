@@ -35,6 +35,21 @@ public class DBTest {
              );
              service.countByCity();
              service.countByState();
+             Contact contacts =
+                     new Contact(
+                             "Abi",
+                             "Selvam",
+                             "Chennai",
+                             "Chennai",
+                             "TN",
+                             "600001",
+                             "abi@gmail.com",
+                             "9876543210"
+                     );
+
+             service.addContact(
+                     contacts
+             );
              connection.close();
 
 
