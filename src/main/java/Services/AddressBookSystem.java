@@ -40,7 +40,7 @@ public class AddressBookSystem {
                                 Collectors.groupingBy(
 
                                         person ->
-                                                person.city
+                                                person.getCity()
                                 )
                         );
     }
@@ -70,7 +70,7 @@ public class AddressBookSystem {
                     cityDictionary
                             .computeIfAbsent(
 
-                                    contact.city,
+                                    contact.getCity(),
 
                                     k ->
                                             new ArrayList<>()
@@ -81,7 +81,7 @@ public class AddressBookSystem {
                     stateDictionary
                             .computeIfAbsent(
 
-                                    contact.state,
+                                    contact.getState(),
 
                                     k ->
                                             new ArrayList<>()
@@ -177,7 +177,7 @@ public class AddressBookSystem {
 
                         person ->
 
-                                person.city
+                                person.getCity()
                                         .equalsIgnoreCase(
                                                 city
                                         )
@@ -211,7 +211,7 @@ public class AddressBookSystem {
 
                         person ->
 
-                                person.state
+                                person.getState()
                                         .equalsIgnoreCase(
                                                 state
                                         )
@@ -240,7 +240,7 @@ public class AddressBookSystem {
 
                         contact ->
 
-                                contact.city
+                                contact.getCity()
                                         .equalsIgnoreCase(
                                                 city
                                         )
@@ -267,7 +267,7 @@ public class AddressBookSystem {
 
                         contact ->
 
-                                contact.city
+                                contact.getCity()
                                         .equalsIgnoreCase(
                                                 state
                                         )
@@ -298,7 +298,7 @@ public class AddressBookSystem {
                                 Collectors.groupingBy(
 
                                         person ->
-                                                person.city,
+                                                person.getCity(),
 
                                         Collectors.counting()
                                 )
@@ -345,7 +345,7 @@ public class AddressBookSystem {
                                 Collectors.groupingBy(
 
                                         person ->
-                                                person.state,
+                                                person.getState(),
 
                                         Collectors.counting()
                                 )
@@ -389,7 +389,7 @@ public class AddressBookSystem {
 
                         Comparator.comparing(
                                 person ->
-                                        person.firstName
+                                        person.getFirstName()
                         )
                 )
 
@@ -418,7 +418,7 @@ public class AddressBookSystem {
 
                         Comparator.comparing(
                                 person ->
-                                        person.city
+                                        person.getCity()
                         )
                 )
 
@@ -447,7 +447,7 @@ public class AddressBookSystem {
 
                         Comparator.comparing(
                                 person ->
-                                        person.state
+                                        person.getState()
                         )
                 )
 
@@ -476,7 +476,7 @@ public class AddressBookSystem {
 
                         Comparator.comparing(
                                 person ->
-                                        person.zip
+                                        person.getZip()
                         )
                 )
 

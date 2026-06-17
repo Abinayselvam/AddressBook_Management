@@ -1,0 +1,14 @@
+{
+  "contacts": [
+    {
+      "firstName": "Bill",
+      "lastName": "Gates",
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "phoneNumber": "9876543210",
+      "email": "bill@gmail.com",
+      "id": "BmBiDjYNwm8"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -46,7 +46,7 @@ public class AddressBook {
 
         for(Contact c : contacts) {
 
-            if(c.firstName
+            if(c.getFirstName()
                     .equalsIgnoreCase(
                             firstName
                     )) {
@@ -55,15 +55,15 @@ public class AddressBook {
                         "New City: "
                 );
 
-                c.city =
-                        sc.nextLine();
+                c.setAddress(sc.nextLine());
+
 
                 System.out.print(
                         "New Phone: "
                 );
 
-                c.phoneNumber =
-                        sc.nextLine();
+                c.setPhoneNumber( sc.nextLine());
+                       ;
 
                 return;
             }
@@ -75,7 +75,7 @@ public class AddressBook {
     }
 
     public void deleteContact(String firstName) {
-        contacts.removeIf(c -> c.firstName.equalsIgnoreCase(firstName));
+        contacts.removeIf(c -> c.getFirstName().equalsIgnoreCase(firstName));
     }
 
     public ArrayList<Contact>
@@ -94,7 +94,7 @@ public class AddressBook {
 
                 .filter(
 
-                        c -> c.city
+                        c -> c.getCity()
                                 .equalsIgnoreCase(
                                         city
                                 )
@@ -115,7 +115,7 @@ public class AddressBook {
 
                 .filter(
 
-                        c -> c.state
+                        c -> c.getState()
                                 .equalsIgnoreCase(
                                         state
                                 )
@@ -135,7 +135,7 @@ public class AddressBook {
 
                 .filter(
 
-                        c -> c.city
+                        c -> c.getCity()
                                 .equalsIgnoreCase(
                                         city
                                 )
@@ -153,7 +153,7 @@ public class AddressBook {
 
                 .filter(
 
-                        c -> c.state
+                        c -> c.getState()
                                 .equalsIgnoreCase(
                                         state
                                 )

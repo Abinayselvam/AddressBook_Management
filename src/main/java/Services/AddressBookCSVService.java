@@ -18,14 +18,14 @@ public class AddressBookCSVService {
         for (Contact contact:contactList)
         {
             String[] data={
-                    contact.firstName,
-                    contact.lastName,
-                    contact.email,
-                    contact.address,
-                    contact.city,
-                    contact.state,
-                    contact.phoneNumber,
-                    contact.zip
+                    contact.getFirstName(),
+                    contact.getLastName(),
+                    contact.getEmail(),
+                    contact.getAddress(),
+                    contact.getCity(),
+                    contact.getState(),
+                    contact.getPhoneNumber(),
+                    contact.getZip()
             };
             writer.writeNext(data);
         }

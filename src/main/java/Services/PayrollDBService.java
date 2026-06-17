@@ -339,42 +339,42 @@ public class PayrollDBService {
 
             ps.setString(
                     1,
-                    contact.firstName
+                    contact.getFirstName()
             );
 
             ps.setString(
                     2,
-                    contact.lastName
+                    contact.getLastName()
             );
 
             ps.setString(
                     3,
-                    contact.address
+                    contact.getAddress()
             );
 
             ps.setString(
                     4,
-                    contact.city
+                    contact.getCity()
             );
 
             ps.setString(
                     5,
-                    contact.state
+                    contact.getState()
             );
 
             ps.setString(
                     6,
-                    contact.zip
+                    contact.getZip()
             );
 
             ps.setString(
                     7,
-                    contact.phoneNumber
+                    contact.getPhoneNumber()
             );
 
             ps.setString(
                     8,
-                    contact.email
+                    contact.getEmail()
             );
 
             ps.setDate(
